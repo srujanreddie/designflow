@@ -254,3 +254,178 @@ enum ActivityAction {
   ASSET_UPLOADED
   TEMPLATE_USED
 }
+
+// ============================================================
+// Design Bundles & External Catalog Importer Models
+// ============================================================
+
+model SourceCatalog {
+  id          String          @id @default(uuid())
+  slug        String          @unique
+  name        String
+  sourceUrl   String
+  description String?
+  isActive    Boolean         @default(true)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  products    SourceProduct[]
+  importJobs  ImportJob[]
+}
+
+model SourceProduct {
+  id                String            @id @default(uuid())
+  catalogId         String
+  catalog           SourceCatalog     @relation(fields: [catalogId], references: [id], onDelete: Cascade)
+  sourceId          String            // Unique ID on external catalog e.g. "db-4091"
+  title             String
+  slug              String
+  sourceUrl         String
+  category          String
+  subcategory       String?
+  authorName        String?
+  description       String?
+  price             Float?
+  currency          String            @default("USD")
+  previewImages     String[]          // Array of preview image URLs
+  productType       String            // e.g. "Canva Template", "Vector Bundle"
+  fileFormats       String[]          // e.g. ["CANVA", "PDF", "PNG", "SVG"]
+  dimensions        String?           // e.g. "1080x1080 px"
+  pageCount         Int               @default(1)
+  tags              String[]
+  licenseType       String            @default("Commercial / Standard")
+  attributionRequired Boolean         @default(false)
+  importStatus      ProductImportStatus @default(DISCOVERED)
+  verificationStatus AssetVerificationStatus @default(PENDING)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  importedTemplate  CatalogTemplate?
+
+  @@unique([catalogId, sourceId])
+  @@index([catalogId, category])
+  @@index([importStatus])
+}
+
+enum ProductImportStatus {
+  DISCOVERED
+  METADATA_EXTRACTED
+  ASSETS_DOWNLOADING
+  IMPORT_COMPLETED
+  LICENSE_RESTRICTED
+  CONVERSION_FAILED
+}
+
+enum AssetVerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+  RESTRICTED
+}
+
+model CatalogTemplate {
+  id                String          @id @default(uuid())
+  sourceProductId   String?         @unique
+  sourceProduct     SourceProduct?  @relation(fields: [sourceProductId], references: [id], onDelete: SetNull)
+  title             String
+  slug              String          @unique
+  category          String
+  width             Int
+  height            Int
+  unit              String          @default("px")
+  isEditable        Boolean         @default(true)
+  documentContent   Json            // Structured DesignFlow DesignDocument JSON
+  previewThumbnail  String
+  colorPalette      String[]        // Hex colors
+  primaryFont       String?
+  downloadUrl       String?
+  downloadAllowed   Boolean         @default(true)
+  usageCount        Int             @default(0)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  @@index([category])
+  @@index([isEditable])
+}
+
+model FontFamily {
+  id            String        @id @default(uuid())
+  family        String        @unique
+  category      String?       // "sans-serif", "serif", "display", "handwriting", "monospace"
+  license       String        @default("Open Font License")
+  source        String?       // "Google Fonts", "DesignBundles", "System"
+  isImported    Boolean       @default(false)
+  isAvailable   Boolean       @default(true)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  variants      FontVariant[]
+}
+
+model FontVariant {
+  id            String        @id @default(uuid())
+  fontFamilyId  String
+  fontFamily    FontFamily    @relation(fields: [fontFamilyId], references: [id], onDelete: Cascade)
+  weight        String        // "400", "700", etc.
+  style         String        @default("normal") // "normal", "italic"
+  format        String        // "woff2", "woff", "ttf", "otf"
+  fileUrl       String?
+  fileSize      Int?
+  checksum      String?
+  createdAt     DateTime      @default(now())
+}
+
+model ImportJob {
+  id              String            @id @default(uuid())
+  catalogId       String
+  catalog         SourceCatalog     @relation(fields: [catalogId], references: [id], onDelete: Cascade)
+  status          JobStatus         @default(PENDING)
+  totalDiscovered Int               @default(0)
+  totalProcessed  Int               @default(0)
+  totalSuccessful Int               @default(0)
+  totalFailed     Int               @default(0)
+  totalRestricted Int               @default(0)
+  checkpointCursor String?
+  errorMessage    String?
+  startedAt       DateTime?
+  completedAt     DateTime?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  items           ImportJobItem[]
+
+  @@index([catalogId, status])
+}
+
+enum JobStatus {
+  PENDING
+  RUNNING
+  PAUSED
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+model ImportJobItem {
+  id            String          @id @default(uuid())
+  jobId         String
+  job           ImportJob       @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  sourceId      String
+  sourceUrl     String
+  status        JobItemStatus   @default(QUEUED)
+  attempts      Int             @default(0)
+  errorMessage  String?
+  processedAt   DateTime?
+  createdAt     DateTime        @default(now())
+
+  @@index([jobId, status])
+}
+
+enum JobItemStatus {
+  QUEUED
+  IN_PROGRESS
+  SUCCESS
+  FAILED
+  SKIPPED
+  LICENSE_RESTRICTED
+}
