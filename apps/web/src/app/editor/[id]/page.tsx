@@ -3,14 +3,14 @@
 import React, { useEffect, use } from 'react';
 import { useParams } from 'next/navigation';
 import { useEditorStore } from '@/store/editor-store';
-import { createDocument } from '../../../../../../packages/document-model/src';
+import { createDocument } from '@packages/document-model/src';
 import { EditorLayout } from '@/components/editor/editor-layout';
 
 interface PageProps {
   params: Promise<{ id: string }> | { id: string };
 }
 
-export default function EditorPage(props: PageProps) {
+function EditorContent(props: PageProps) {
   const routerParams = useParams();
   const idFromRouter = routerParams?.id as string | undefined;
 
@@ -22,7 +22,6 @@ export default function EditorPage(props: PageProps) {
         const unwrapped = use(props.params as Promise<{ id: string }>);
         paramId = unwrapped.id;
       } catch {
-        // Fallback to router params if use() is not supported in this runtime
         paramId = idFromRouter || 'default';
       }
     } else {
@@ -144,4 +143,12 @@ export default function EditorPage(props: PageProps) {
   ]);
 
   return <EditorLayout />;
+}
+
+export default function EditorPage(props: PageProps) {
+  return (
+    <React.Suspense fallback={<div className="flex h-screen w-screen items-center justify-center bg-slate-900 text-white">Loading Editor...</div>}>
+      <EditorContent {...props} />
+    </React.Suspense>
+  );
 }

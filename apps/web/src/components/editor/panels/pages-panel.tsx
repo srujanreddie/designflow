@@ -3,7 +3,7 @@
 import React from 'react';
 import { useEditorStore } from '@/store/editor-store';
 import { FileText, Plus, Copy, Trash2, Eye } from 'lucide-react';
-import type { BackgroundConfig, Color } from '../../../../../../packages/shared-types/src';
+import type { BackgroundConfig, Color, GradientStop } from '@packages/shared-types/src';
 
 function getBackgroundStyle(bg: BackgroundConfig): React.CSSProperties {
   if (bg.type === 'color') {
@@ -11,10 +11,10 @@ function getBackgroundStyle(bg: BackgroundConfig): React.CSSProperties {
     return { backgroundColor: `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a ?? 1})` };
   }
   if (bg.type === 'gradient') {
-    const g = bg.gradient;
+    const g = bg.fill;
     if (g.type === 'linear-gradient') {
       const stopsStr = g.stops
-        .map((s) => `rgba(${s.color.r}, ${s.color.g}, ${s.color.b}, ${s.color.a ?? 1}) ${s.offset * 100}%`)
+        .map((s: GradientStop) => `rgba(${s.color.r}, ${s.color.g}, ${s.color.b}, ${s.color.a ?? 1}) ${s.offset * 100}%`)
         .join(', ');
       return { background: `linear-gradient(${g.angle || 135}deg, ${stopsStr})` };
     }

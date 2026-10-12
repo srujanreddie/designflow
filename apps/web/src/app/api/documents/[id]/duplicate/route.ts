@@ -3,7 +3,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
-import { documents, type StoredDocument } from '../route';
+import { documents, type StoredDocument } from '../../route';
 
 export async function POST(
   request: NextRequest,

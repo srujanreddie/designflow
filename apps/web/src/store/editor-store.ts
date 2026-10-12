@@ -14,7 +14,7 @@ import type {
   Color,
   Fill,
   ExportSettings,
-} from '../../../../packages/shared-types/src';
+} from '@packages/shared-types/src';
 import {
   CommandHistory,
   AddElementCommand,
@@ -29,14 +29,14 @@ import {
   UpdatePageBackgroundCommand,
   BatchCommand,
   type EditorCommand,
-} from '../../../../packages/editor-engine/src';
+} from '@packages/editor-engine/src';
 import {
   createDocument,
   createPage,
   createTextElement,
   createShapeElement,
   createImageElement,
-} from '../../../../packages/document-model/src';
+} from '@packages/document-model/src';
 
 // ============================================================
 // Editor State Types

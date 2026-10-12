@@ -25,7 +25,7 @@ const GRADIENT_PRESETS: GradientPreset[] = [
     css: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
     config: {
       type: 'gradient',
-      gradient: {
+      fill: {
         type: 'linear-gradient',
         angle: 135,
         stops: [
@@ -40,7 +40,7 @@ const GRADIENT_PRESETS: GradientPreset[] = [
     css: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
     config: {
       type: 'gradient',
-      gradient: {
+      fill: {
         type: 'linear-gradient',
         angle: 135,
         stops: [
@@ -55,7 +55,7 @@ const GRADIENT_PRESETS: GradientPreset[] = [
     css: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
     config: {
       type: 'gradient',
-      gradient: {
+      fill: {
         type: 'linear-gradient',
         angle: 135,
         stops: [
@@ -70,7 +70,7 @@ const GRADIENT_PRESETS: GradientPreset[] = [
     css: 'linear-gradient(135deg, #0ba360 0%, #3cba92 100%)',
     config: {
       type: 'gradient',
-      gradient: {
+      fill: {
         type: 'linear-gradient',
         angle: 135,
         stops: [
@@ -85,7 +85,7 @@ const GRADIENT_PRESETS: GradientPreset[] = [
     css: 'linear-gradient(135deg, #1f2937 0%, #111827 100%)',
     config: {
       type: 'gradient',
-      gradient: {
+      fill: {
         type: 'linear-gradient',
         angle: 135,
         stops: [
@@ -100,7 +100,7 @@ const GRADIENT_PRESETS: GradientPreset[] = [
     css: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)',
     config: {
       type: 'gradient',
-      gradient: {
+      fill: {
         type: 'linear-gradient',
         angle: 135,
         stops: [

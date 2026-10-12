@@ -40,8 +40,8 @@ import {
   Clock,
   ExternalLink,
   Sliders,
-  Instagram,
-  Youtube,
+  Image as ImageIcon,
+  Video,
   Tv,
   FileSpreadsheet,
 } from "lucide-react";
@@ -71,7 +71,7 @@ const CANVAS_PRESETS: CanvasPreset[] = [
     name: "Instagram Post",
     width: 1080,
     height: 1080,
-    icon: <Instagram className="h-5 w-5 text-pink-500" />,
+    icon: <ImageIcon className="h-5 w-5 text-pink-500" />,
     category: "Social Media",
   },
   {
@@ -79,7 +79,7 @@ const CANVAS_PRESETS: CanvasPreset[] = [
     name: "Instagram Story",
     width: 1080,
     height: 1920,
-    icon: <Instagram className="h-5 w-5 text-purple-500" />,
+    icon: <ImageIcon className="h-5 w-5 text-purple-500" />,
     category: "Social Media",
   },
   {
@@ -87,7 +87,7 @@ const CANVAS_PRESETS: CanvasPreset[] = [
     name: "YouTube Thumbnail",
     width: 1280,
     height: 720,
-    icon: <Youtube className="h-5 w-5 text-red-500" />,
+    icon: <Video className="h-5 w-5 text-red-500" />,
     category: "Video",
   },
   {

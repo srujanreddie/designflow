@@ -4,8 +4,8 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { v4 as uuidv4 } from 'uuid';
-import { createDocument, createPage } from '../../../../../packages/document-model/src';
-import type { DesignDocument } from '../../../../../packages/shared-types/src';
+import { createDocument, createPage } from '@packages/document-model/src';
+import type { DesignDocument } from '@packages/shared-types/src';
 
 // In-memory document store (shared across routes via module scope)
 // In production, this would use Prisma with PostgreSQL
@@ -308,7 +308,7 @@ export async function POST(request: NextRequest) {
 
     documents.set(stored.id, stored);
 
-    return NextResponse.json({ success: true, data: { id: doc.id, ...stored } }, { status: 201 });
+    return NextResponse.json({ success: true, data: stored }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: 'Failed to create document' },

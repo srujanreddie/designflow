@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
               DesignFlow
             </span>
             <span className="text-xs text-slate-400">
-              &copy; {new Date().getFullYear()} DesignFlow Inc. All rights reserved.
+              &copy; 2026 DesignFlow Inc. All rights reserved.
             </span>
           </div>
 
