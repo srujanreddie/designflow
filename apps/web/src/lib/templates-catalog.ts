@@ -1,12 +1,12 @@
-// DesignFlow - Open Source Curated Template Library
-// A comprehensive catalog of 24+ high quality open source design templates
+// DesignFlow - Open Source Comprehensive Template Library
+// Curated open-source design templates inspired by modern design workflows (Canva, Unsplash, Dribbble)
 
 import { v4 as uuidv4 } from 'uuid';
 
 export interface OpenSourceTemplate {
   id: string;
   name: string;
-  category: 'Social Media' | 'Presentations' | 'Posters' | 'Marketing' | 'Business' | 'Thumbnails';
+  category: 'Social Media' | 'Presentations' | 'Posters' | 'Marketing' | 'Business' | 'Thumbnails' | 'Documents';
   width: number;
   height: number;
   gradient: string;
@@ -64,18 +64,6 @@ export const OPENSOURCE_TEMPLATES: OpenSourceTemplate[] = [
           fontFamily: 'Inter', fontSize: 78, fontWeight: 'bold', fontStyle: 'normal',
           textDecoration: 'none', color: { r: 255, g: 255, b: 255, a: 1 },
           lineHeight: 1.05, letterSpacing: 2, textAlign: 'left', verticalAlign: 'top',
-        },
-        padding: 0,
-      },
-      {
-        id: uuidv4(), type: 'text', name: 'Subtitle',
-        x: 90, y: 640, width: 750, height: 60, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 0.95, locked: false, visible: true,
-        content: 'Limited edition apparel & accessories. Shop today only.',
-        style: {
-          fontFamily: 'Inter', fontSize: 24, fontWeight: 'normal', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 255, g: 255, b: 255, a: 1 },
-          lineHeight: 1.4, letterSpacing: 0, textAlign: 'left', verticalAlign: 'top',
         },
         padding: 0,
       },
@@ -186,13 +174,6 @@ export const OPENSOURCE_TEMPLATES: OpenSourceTemplate[] = [
         stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 0,
       },
       {
-        id: uuidv4(), type: 'shape', shapeType: 'circle', name: 'Glow Orb',
-        x: 1300, y: 180, width: 450, height: 450, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 0.18, locked: true, visible: true,
-        fill: { type: 'solid', color: { r: 99, g: 66, b: 236, a: 1 } },
-        stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 0,
-      },
-      {
         id: uuidv4(), type: 'text', name: 'Category Tag',
         x: 150, y: 260, width: 400, height: 40, rotation: 0, scaleX: 1, scaleY: 1,
         opacity: 1, locked: false, visible: true,
@@ -220,23 +201,11 @@ export const OPENSOURCE_TEMPLATES: OpenSourceTemplate[] = [
         id: uuidv4(), type: 'text', name: 'Subtext',
         x: 150, y: 620, width: 800, height: 80, rotation: 0, scaleX: 1, scaleY: 1,
         opacity: 0.7, locked: false, visible: true,
-        content: 'The next-generation collaborative graphic editor built for the high-velocity cloud.',
+        content: 'The next-generation collaborative graphic editor built for modern product teams.',
         style: {
           fontFamily: 'Inter', fontSize: 24, fontWeight: 'normal', fontStyle: 'normal',
           textDecoration: 'none', color: { r: 203, g: 213, b: 225, a: 1 },
           lineHeight: 1.5, letterSpacing: 0, textAlign: 'left', verticalAlign: 'top',
-        },
-        padding: 0,
-      },
-      {
-        id: uuidv4(), type: 'text', name: 'Presenter Footer',
-        x: 150, y: 880, width: 600, height: 40, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 0.5, locked: false, visible: true,
-        content: 'CONFIDENTIAL • Q4 2026',
-        style: {
-          fontFamily: 'Inter', fontSize: 16, fontWeight: '500', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 148, g: 163, b: 184, a: 1 },
-          lineHeight: 1, letterSpacing: 2, textAlign: 'left', verticalAlign: 'top',
         },
         padding: 0,
       },
@@ -293,25 +262,6 @@ export const OPENSOURCE_TEMPLATES: OpenSourceTemplate[] = [
         },
         padding: 0,
       },
-      {
-        id: uuidv4(), type: 'shape', shapeType: 'circle', name: 'Accent Circle',
-        x: 940, y: 220, width: 260, height: 260, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 0.9, locked: false, visible: true,
-        fill: { type: 'solid', color: { r: 239, g: 68, b: 68, a: 1 } },
-        stroke: { r: 255, g: 255, b: 255, a: 1 }, strokeWidth: 6, cornerRadius: 0,
-      },
-      {
-        id: uuidv4(), type: 'text', name: 'Circle Text',
-        x: 950, y: 310, width: 240, height: 80, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        content: 'HONEST\nREVIEW',
-        style: {
-          fontFamily: 'Inter', fontSize: 32, fontWeight: 'bold', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 255, g: 255, b: 255, a: 1 },
-          lineHeight: 1.1, letterSpacing: 1, textAlign: 'center', verticalAlign: 'middle',
-        },
-        padding: 0,
-      },
     ],
   },
 
@@ -335,18 +285,6 @@ export const OPENSOURCE_TEMPLATES: OpenSourceTemplate[] = [
         stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 0,
       },
       {
-        id: uuidv4(), type: 'text', name: 'Year Tag',
-        x: 100, y: 160, width: 1000, height: 40, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        content: 'OCTOBER 24-26 • LIVE IN SAN FRANCISCO',
-        style: {
-          fontFamily: 'Inter', fontSize: 20, fontWeight: 'bold', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 168, g: 85, b: 247, a: 1 },
-          lineHeight: 1, letterSpacing: 4, textAlign: 'center', verticalAlign: 'middle',
-        },
-        padding: 0,
-      },
-      {
         id: uuidv4(), type: 'text', name: 'Event Name',
         x: 80, y: 260, width: 1040, height: 260, rotation: 0, scaleX: 1, scaleY: 1,
         opacity: 1, locked: false, visible: true,
@@ -355,37 +293,6 @@ export const OPENSOURCE_TEMPLATES: OpenSourceTemplate[] = [
           fontFamily: 'Inter', fontSize: 108, fontWeight: '900', fontStyle: 'normal',
           textDecoration: 'none', color: { r: 255, g: 255, b: 255, a: 1 },
           lineHeight: 0.95, letterSpacing: -2, textAlign: 'center', verticalAlign: 'middle',
-        },
-        padding: 0,
-      },
-      {
-        id: uuidv4(), type: 'shape', shapeType: 'rectangle', name: 'Divider',
-        x: 480, y: 560, width: 240, height: 6, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        fill: { type: 'solid', color: { r: 236, g: 72, b: 153, a: 1 } },
-        stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 3,
-      },
-      {
-        id: uuidv4(), type: 'text', name: 'Lineup Headliners',
-        x: 100, y: 640, width: 1000, height: 160, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        content: 'THE CHROMATICS • SOLARIS • TYCHO\nGLASS ANIMALS • DISCLOSURE',
-        style: {
-          fontFamily: 'Inter', fontSize: 34, fontWeight: 'bold', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 241, g: 245, b: 249, a: 1 },
-          lineHeight: 1.6, letterSpacing: 2, textAlign: 'center', verticalAlign: 'top',
-        },
-        padding: 0,
-      },
-      {
-        id: uuidv4(), type: 'text', name: 'Ticket Info',
-        x: 100, y: 1380, width: 1000, height: 60, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 0.6, locked: false, visible: true,
-        content: 'TICKETS & VIP PASSES ON SALE AT WWW.NEONWAVE.IO',
-        style: {
-          fontFamily: 'Inter', fontSize: 18, fontWeight: '500', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 203, g: 213, b: 225, a: 1 },
-          lineHeight: 1, letterSpacing: 2, textAlign: 'center', verticalAlign: 'top',
         },
         padding: 0,
       },
@@ -412,13 +319,6 @@ export const OPENSOURCE_TEMPLATES: OpenSourceTemplate[] = [
         stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 0,
       },
       {
-        id: uuidv4(), type: 'shape', shapeType: 'rectangle', name: 'Gold Strip',
-        x: 0, y: 0, width: 14, height: 600, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: true, visible: true,
-        fill: { type: 'solid', color: { r: 234, g: 179, b: 8, a: 1 } },
-        stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 0,
-      },
-      {
         id: uuidv4(), type: 'text', name: 'Person Name',
         x: 90, y: 160, width: 600, height: 60, rotation: 0, scaleX: 1, scaleY: 1,
         opacity: 1, locked: false, visible: true,
@@ -430,157 +330,133 @@ export const OPENSOURCE_TEMPLATES: OpenSourceTemplate[] = [
         },
         padding: 0,
       },
+    ],
+  },
+
+  // 7. Documents: Modern Resume / CV (2480x3508 A4)
+  {
+    id: 'tpl-modern-resume',
+    name: 'Modern Executive Resume (A4)',
+    category: 'Documents',
+    width: 2480,
+    height: 3508,
+    gradient: 'from-slate-800 via-slate-900 to-slate-950',
+    tag: 'Career',
+    tagVariant: 'success',
+    description: 'Clean structured CV with left sidebar column and experience hierarchy',
+    elements: [
       {
-        id: uuidv4(), type: 'text', name: 'Designation',
-        x: 90, y: 230, width: 600, height: 30, rotation: 0, scaleX: 1, scaleY: 1,
+        id: uuidv4(), type: 'shape', shapeType: 'rectangle', name: 'Page BG',
+        x: 0, y: 0, width: 2480, height: 3508, rotation: 0, scaleX: 1, scaleY: 1,
+        opacity: 1, locked: true, visible: true,
+        fill: { type: 'solid', color: { r: 255, g: 255, b: 255, a: 1 } },
+        stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 0,
+      },
+      {
+        id: uuidv4(), type: 'shape', shapeType: 'rectangle', name: 'Left Sidebar',
+        x: 0, y: 0, width: 780, height: 3508, rotation: 0, scaleX: 1, scaleY: 1,
+        opacity: 1, locked: true, visible: true,
+        fill: { type: 'solid', color: { r: 241, g: 245, b: 249, a: 1 } },
+        stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 0,
+      },
+      {
+        id: uuidv4(), type: 'text', name: 'Candidate Name',
+        x: 880, y: 220, width: 1400, height: 120, rotation: 0, scaleX: 1, scaleY: 1,
         opacity: 1, locked: false, visible: true,
-        content: 'FOUNDER & CHIEF CREATIVE OFFICER',
+        content: 'EMILY WATSON',
         style: {
-          fontFamily: 'Inter', fontSize: 16, fontWeight: 'bold', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 234, g: 179, b: 8, a: 1 },
+          fontFamily: 'Inter', fontSize: 68, fontWeight: 'bold', fontStyle: 'normal',
+          textDecoration: 'none', color: { r: 15, g: 23, b: 42, a: 1 },
           lineHeight: 1, letterSpacing: 2, textAlign: 'left', verticalAlign: 'top',
         },
         padding: 0,
       },
       {
-        id: uuidv4(), type: 'text', name: 'Contact Block',
-        x: 90, y: 350, width: 600, height: 140, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 0.8, locked: false, visible: true,
-        content: '+1 (555) 234-8901\nalexander@designflow.studio\nwww.designflow.studio\n742 Evergreen Terrace, San Francisco, CA',
+        id: uuidv4(), type: 'text', name: 'Candidate Title',
+        x: 880, y: 340, width: 1400, height: 60, rotation: 0, scaleX: 1, scaleY: 1,
+        opacity: 1, locked: false, visible: true,
+        content: 'Lead Product Designer & Design Systems Architect',
         style: {
-          fontFamily: 'Inter', fontSize: 16, fontWeight: 'normal', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 203, g: 213, b: 225, a: 1 },
-          lineHeight: 1.8, letterSpacing: 0.5, textAlign: 'left', verticalAlign: 'top',
+          fontFamily: 'Inter', fontSize: 28, fontWeight: '600', fontStyle: 'normal',
+          textDecoration: 'none', color: { r: 99, g: 66, b: 236, a: 1 },
+          lineHeight: 1, letterSpacing: 1, textAlign: 'left', verticalAlign: 'top',
+        },
+        padding: 0,
+      },
+      {
+        id: uuidv4(), type: 'text', name: 'Experience Title',
+        x: 880, y: 520, width: 1400, height: 50, rotation: 0, scaleX: 1, scaleY: 1,
+        opacity: 1, locked: false, visible: true,
+        content: 'WORK EXPERIENCE',
+        style: {
+          fontFamily: 'Inter', fontSize: 26, fontWeight: 'bold', fontStyle: 'normal',
+          textDecoration: 'none', color: { r: 30, g: 41, b: 59, a: 1 },
+          lineHeight: 1, letterSpacing: 3, textAlign: 'left', verticalAlign: 'top',
+        },
+        padding: 0,
+      },
+      {
+        id: uuidv4(), type: 'text', name: 'Experience Details',
+        x: 880, y: 600, width: 1400, height: 400, rotation: 0, scaleX: 1, scaleY: 1,
+        opacity: 0.85, locked: false, visible: true,
+        content: 'Senior Product Designer • Vercel (2022 - Present)\nLed design infrastructure for cloud deployment dashboard, improving conversion by 34%.\n\nProduct Designer • Stripe (2019 - 2022)\nArchitected unified dashboard components across 14 financial products worldwide.',
+        style: {
+          fontFamily: 'Inter', fontSize: 24, fontWeight: 'normal', fontStyle: 'normal',
+          textDecoration: 'none', color: { r: 51, g: 65, b: 85, a: 1 },
+          lineHeight: 1.7, letterSpacing: 0, textAlign: 'left', verticalAlign: 'top',
         },
         padding: 0,
       },
     ],
   },
 
-  // 7. Marketing: Food & Cafe Instagram Story (1080x1920)
+  // 8. Marketing: Brand Logo Identity Kit (500x500)
   {
-    id: 'tpl-cafe-story',
-    name: 'Artisan Cafe Instagram Story (1080x1920)',
-    category: 'Social Media',
-    width: 1080,
-    height: 1920,
-    gradient: 'from-amber-700 via-amber-800 to-stone-900',
-    tag: 'Food',
-    tagVariant: 'warning',
-    description: 'Warm cafe story template for morning specials and drinks',
-    elements: [
-      {
-        id: uuidv4(), type: 'shape', shapeType: 'rectangle', name: 'Background',
-        x: 0, y: 0, width: 1080, height: 1920, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: true, visible: true,
-        fill: { type: 'solid', color: { r: 41, g: 24, b: 16, a: 1 } },
-        stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 0,
-      },
-      {
-        id: uuidv4(), type: 'text', name: 'Morning Tag',
-        x: 100, y: 380, width: 880, height: 50, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        content: '— MORNING SPECIAL —',
-        style: {
-          fontFamily: 'Inter', fontSize: 24, fontWeight: 'bold', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 245, g: 158, b: 11, a: 1 },
-          lineHeight: 1, letterSpacing: 6, textAlign: 'center', verticalAlign: 'middle',
-        },
-        padding: 0,
-      },
-      {
-        id: uuidv4(), type: 'text', name: 'Story Headline',
-        x: 100, y: 480, width: 880, height: 260, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        content: 'HANDCRAFTED\nCOLD BREW',
-        style: {
-          fontFamily: 'Inter', fontSize: 88, fontWeight: '900', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 255, g: 247, b: 237, a: 1 },
-          lineHeight: 1.05, letterSpacing: -1, textAlign: 'center', verticalAlign: 'middle',
-        },
-        padding: 0,
-      },
-      {
-        id: uuidv4(), type: 'shape', shapeType: 'circle', name: 'Price Badge',
-        x: 440, y: 820, width: 200, height: 200, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        fill: { type: 'solid', color: { r: 217, g: 119, b: 6, a: 1 } },
-        stroke: { r: 255, g: 247, b: 237, a: 1 }, strokeWidth: 4, cornerRadius: 0,
-      },
-      {
-        id: uuidv4(), type: 'text', name: 'Price Text',
-        x: 450, y: 885, width: 180, height: 70, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        content: '$4.50',
-        style: {
-          fontFamily: 'Inter', fontSize: 44, fontWeight: 'bold', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 255, g: 255, b: 255, a: 1 },
-          lineHeight: 1, letterSpacing: 0, textAlign: 'center', verticalAlign: 'middle',
-        },
-        padding: 0,
-      },
-    ],
-  },
-
-  // 8. Marketing: Webinar Announcement Banner (1200x628)
-  {
-    id: 'tpl-webinar-banner',
-    name: 'Live Webinar Banner (1200x628)',
+    id: 'tpl-logo-badge',
+    name: 'Geometric Minimalist Logo (500x500)',
     category: 'Marketing',
-    width: 1200,
-    height: 628,
-    gradient: 'from-blue-600 via-indigo-600 to-violet-700',
-    tag: 'Webinar',
-    tagVariant: 'purple',
-    description: 'LinkedIn and Facebook event banner with registration button',
+    width: 500,
+    height: 500,
+    gradient: 'from-amber-400 via-orange-500 to-rose-600',
+    tag: 'Brand',
+    tagVariant: 'warning',
+    description: 'Iconic vector emblem for modern software brands & creator identity',
     elements: [
       {
-        id: uuidv4(), type: 'shape', shapeType: 'rectangle', name: 'Background',
-        x: 0, y: 0, width: 1200, height: 628, rotation: 0, scaleX: 1, scaleY: 1,
+        id: uuidv4(), type: 'shape', shapeType: 'rectangle', name: 'Logo Background',
+        x: 0, y: 0, width: 500, height: 500, rotation: 0, scaleX: 1, scaleY: 1,
         opacity: 1, locked: true, visible: true,
-        fill: { type: 'solid', color: { r: 30, g: 58, b: 138, a: 1 } },
+        fill: { type: 'solid', color: { r: 15, g: 23, b: 42, a: 1 } },
         stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 0,
       },
       {
-        id: uuidv4(), type: 'text', name: 'Date Badge',
-        x: 80, y: 90, width: 400, height: 30, rotation: 0, scaleX: 1, scaleY: 1,
+        id: uuidv4(), type: 'shape', shapeType: 'rectangle', name: 'Diamond Emblem',
+        x: 175, y: 110, width: 150, height: 150, rotation: 45, scaleX: 1, scaleY: 1,
         opacity: 1, locked: false, visible: true,
-        content: '🔴 LIVE WEBINAR • THURSDAY 2PM EST',
+        fill: { type: 'solid', color: { r: 99, g: 66, b: 236, a: 1 } },
+        stroke: { r: 255, g: 255, b: 255, a: 1 }, strokeWidth: 4, cornerRadius: 24,
+      },
+      {
+        id: uuidv4(), type: 'text', name: 'Brand Name',
+        x: 50, y: 310, width: 400, height: 50, rotation: 0, scaleX: 1, scaleY: 1,
+        opacity: 1, locked: false, visible: true,
+        content: 'NEXUS',
         style: {
-          fontFamily: 'Inter', fontSize: 16, fontWeight: 'bold', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 147, g: 197, b: 253, a: 1 },
-          lineHeight: 1, letterSpacing: 2, textAlign: 'left', verticalAlign: 'top',
+          fontFamily: 'Inter', fontSize: 38, fontWeight: 'bold', fontStyle: 'normal',
+          textDecoration: 'none', color: { r: 255, g: 255, b: 255, a: 1 },
+          lineHeight: 1, letterSpacing: 8, textAlign: 'center', verticalAlign: 'middle',
         },
         padding: 0,
       },
       {
-        id: uuidv4(), type: 'text', name: 'Webinar Title',
-        x: 80, y: 150, width: 900, height: 160, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        content: 'Scaling Full-Stack Apps to\n1 Million Active Users',
+        id: uuidv4(), type: 'text', name: 'Tagline',
+        x: 50, y: 375, width: 400, height: 30, rotation: 0, scaleX: 1, scaleY: 1,
+        opacity: 0.6, locked: false, visible: true,
+        content: 'STUDIO & LABS',
         style: {
-          fontFamily: 'Inter', fontSize: 56, fontWeight: 'bold', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 255, g: 255, b: 255, a: 1 },
-          lineHeight: 1.15, letterSpacing: -1, textAlign: 'left', verticalAlign: 'top',
-        },
-        padding: 0,
-      },
-      {
-        id: uuidv4(), type: 'shape', shapeType: 'rectangle', name: 'Register Button',
-        x: 80, y: 390, width: 260, height: 64, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        fill: { type: 'solid', color: { r: 249, g: 115, b: 22, a: 1 } },
-        stroke: { r: 0, g: 0, b: 0, a: 0 }, strokeWidth: 0, cornerRadius: 12,
-      },
-      {
-        id: uuidv4(), type: 'text', name: 'Register Text',
-        x: 80, y: 408, width: 260, height: 35, rotation: 0, scaleX: 1, scaleY: 1,
-        opacity: 1, locked: false, visible: true,
-        content: 'RESERVE SEAT →',
-        style: {
-          fontFamily: 'Inter', fontSize: 18, fontWeight: 'bold', fontStyle: 'normal',
-          textDecoration: 'none', color: { r: 255, g: 255, b: 255, a: 1 },
-          lineHeight: 1, letterSpacing: 1, textAlign: 'center', verticalAlign: 'middle',
+          fontFamily: 'Inter', fontSize: 13, fontWeight: '600', fontStyle: 'normal',
+          textDecoration: 'none', color: { r: 148, g: 163, b: 184, a: 1 },
+          lineHeight: 1, letterSpacing: 4, textAlign: 'center', verticalAlign: 'middle',
         },
         padding: 0,
       },
