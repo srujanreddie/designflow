@@ -165,6 +165,50 @@ const TEMPLATES: Template[] = [
     tagVariant: "warning",
     description: "Warm appetizing layout for digital menus, specials, and story posts",
   },
+  {
+    id: "tpl-db-1",
+    name: "Luxury Real Estate Property Showcase",
+    category: "Social Media",
+    width: 1080,
+    height: 1080,
+    gradient: "from-amber-700 via-stone-800 to-stone-900",
+    tag: "DesignBundles",
+    tagVariant: "warning",
+    description: "Modern home listing template with price badge, specs grid & contact CTA",
+  },
+  {
+    id: "tpl-db-2",
+    name: "Customer Order Thank You Card",
+    category: "E-Commerce",
+    width: 1200,
+    height: 800,
+    gradient: "from-rose-400 via-pink-500 to-purple-500",
+    tag: "Best Seller",
+    tagVariant: "purple",
+    description: "Etsy & Shopify order packaging insert with social discount code",
+  },
+  {
+    id: "tpl-db-3",
+    name: "Daily Productivity & Habit Planner",
+    category: "Planners",
+    width: 2480,
+    height: 3508,
+    gradient: "from-teal-600 via-emerald-600 to-slate-900",
+    tag: "Printable",
+    tagVariant: "success",
+    description: "Printable daily schedule tracker with top 3 priorities and hourly block",
+  },
+  {
+    id: "tpl-db-4",
+    name: "Aesthetic Brand Guidelines & Moodboard",
+    category: "Branding",
+    width: 1920,
+    height: 1080,
+    gradient: "from-amber-200 via-rose-300 to-indigo-300",
+    tag: "Studio Kit",
+    tagVariant: "default",
+    description: "Visual identity moodboard with color swatches, font pairings & values",
+  },
 ];
 
 const CATEGORIES = [
@@ -173,6 +217,9 @@ const CATEGORIES = [
   "Presentations",
   "Posters",
   "Documents",
+  "Planners",
+  "Branding",
+  "E-Commerce",
 ];
 
 function TemplatesContent() {
