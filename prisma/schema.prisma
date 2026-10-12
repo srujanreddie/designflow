@@ -1,0 +1,256 @@
+// This is the Prisma schema for DesignFlow
+// Learn more at: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================
+// User & Authentication
+// ============================================================
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  name          String
+  passwordHash  String
+  avatarUrl     String?
+  role          UserRole  @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  documents     Document[]
+  assets        Asset[]
+  shares        DocumentShare[]   @relation("SharedWith")
+  sharedBy      DocumentShare[]   @relation("SharedBy")
+  comments      Comment[]
+  activities    Activity[]
+  revisions     DocumentRevision[]
+
+  @@index([email])
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+// ============================================================
+// Design Documents
+// ============================================================
+
+model Document {
+  id            String    @id @default(uuid())
+  title         String    @default("Untitled Design")
+  width         Int
+  height        Int
+  unit          String    @default("px")
+  content       Json      // The full DesignDocument JSON
+  schemaVersion Int       @default(1)
+  version       Int       @default(0)
+  thumbnailUrl  String?
+  
+  // Template fields
+  isTemplate    Boolean   @default(false)
+  templateCategory String?
+  templateTags  String[]
+  templateDescription String?
+  isPremium     Boolean   @default(false)
+  usageCount    Int       @default(0)
+  
+  // Ownership
+  ownerId       String
+  owner         User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  
+  // Status
+  isDeleted     Boolean   @default(false)
+  deletedAt     DateTime?
+  lastOpenedAt  DateTime?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  shares        DocumentShare[]
+  revisions     DocumentRevision[]
+  comments      Comment[]
+  activities    Activity[]
+
+  @@index([ownerId])
+  @@index([isTemplate, templateCategory])
+  @@index([isDeleted])
+  @@index([updatedAt])
+}
+
+// ============================================================
+// Document Sharing & Permissions
+// ============================================================
+
+model DocumentShare {
+  id            String     @id @default(uuid())
+  documentId    String
+  document      Document   @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  
+  // Who it's shared with
+  userId        String?    // null if shared via email to unregistered user
+  user          User?      @relation("SharedWith", fields: [userId], references: [id])
+  email         String     // email of the invitee
+  
+  // Who shared it
+  sharedById    String
+  sharedBy      User       @relation("SharedBy", fields: [sharedById], references: [id])
+  
+  permission    Permission @default(VIEWER)
+  
+  // Share link
+  shareToken    String?    @unique
+  isPublicLink  Boolean    @default(false)
+  
+  acceptedAt    DateTime?
+  expiresAt     DateTime?
+  revokedAt     DateTime?
+  
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@unique([documentId, email])
+  @@index([documentId])
+  @@index([userId])
+  @@index([shareToken])
+}
+
+enum Permission {
+  VIEWER
+  COMMENTER
+  EDITOR
+  OWNER
+}
+
+// ============================================================
+// Document Version History
+// ============================================================
+
+model DocumentRevision {
+  id            String    @id @default(uuid())
+  documentId    String
+  document      Document  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  
+  version       Int
+  content       Json      // Snapshot of the document at this version
+  description   String?
+  
+  createdById   String
+  createdBy     User      @relation(fields: [createdById], references: [id])
+  
+  createdAt     DateTime  @default(now())
+
+  @@unique([documentId, version])
+  @@index([documentId, createdAt])
+}
+
+// ============================================================
+// Assets (Uploaded Files)
+// ============================================================
+
+model Asset {
+  id            String    @id @default(uuid())
+  name          String
+  type          AssetType
+  mimeType      String
+  url           String
+  thumbnailUrl  String?
+  fileSize      Int       // bytes
+  width         Int?
+  height        Int?
+  
+  ownerId       String
+  owner         User      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  
+  isDeleted     Boolean   @default(false)
+  deletedAt     DateTime?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([ownerId])
+  @@index([type])
+  @@index([isDeleted])
+}
+
+enum AssetType {
+  IMAGE
+  SVG
+  FONT
+  VIDEO
+}
+
+// ============================================================
+// Comments
+// ============================================================
+
+model Comment {
+  id            String    @id @default(uuid())
+  documentId    String
+  document      Document  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  pageId        String
+  
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  
+  content       String
+  positionX     Float
+  positionY     Float
+  resolved      Boolean   @default(false)
+  
+  parentId      String?   // For replies
+  parent        Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  replies       Comment[] @relation("CommentReplies")
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([documentId])
+  @@index([parentId])
+}
+
+// ============================================================
+// Activity Log
+// ============================================================
+
+model Activity {
+  id            String       @id @default(uuid())
+  documentId    String?
+  document      Document?    @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  
+  userId        String
+  user          User         @relation(fields: [userId], references: [id])
+  
+  action        ActivityAction
+  metadata      Json?
+  
+  createdAt     DateTime     @default(now())
+
+  @@index([documentId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+enum ActivityAction {
+  DOCUMENT_CREATED
+  DOCUMENT_UPDATED
+  DOCUMENT_DELETED
+  DOCUMENT_SHARED
+  DOCUMENT_EXPORTED
+  DOCUMENT_RESTORED
+  COMMENT_ADDED
+  COMMENT_RESOLVED
+  COLLABORATOR_JOINED
+  ASSET_UPLOADED
+  TEMPLATE_USED
+}
